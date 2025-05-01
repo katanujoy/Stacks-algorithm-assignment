@@ -1,0 +1,25 @@
+HTML TAG VALIDATOR PSEUDOCODE
+
+FUNCTION HTMLElements(str):
+    1. Create an empty stack (to track opening tags)
+    2. Extract all HTML tags from the string using regex
+       - Matches patterns like <div>, </p>, etc.
+    
+    3. FOR each tag in the extracted tags:
+        IF tag is an OPENING tag (e.g., <div>):
+            - Push the tag name onto the stack
+        
+        IF tag is a CLOSING tag (e.g., </div>):
+            IF stack is empty:
+                - Return the tag name (orphan closing tag)
+            
+            IF the top of the stack MATCHES the closing tag:
+                - Pop the stack (valid pair)
+            ELSE:
+                - Return the top of the stack (mismatch)
+    
+    4. AFTER processing all tags:
+        IF stack is empty:
+            - Return "true" (all tags nested correctly)
+        ELSE:
+            - Return the first remaining tag in the stack (unclosed tag)
