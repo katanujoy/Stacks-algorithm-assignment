@@ -1,1 +1,1 @@
-# Stscks-algorithm--assignment
+# Stacks-algorithm-assignment
